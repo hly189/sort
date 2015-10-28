@@ -21,7 +21,7 @@ class SListNode(object):
 
 class SList(object):
 	"""Singly Linked List """
-	def __init__(self, head = None, previous = None):
+	def __init__(self, head = None):
 		self.head = head
 		self.size = 0
 
