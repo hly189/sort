@@ -1,0 +1,51 @@
+
+class BinaryTree(object):
+	def __init__(self,item): 
+		self.item = item 
+		self.left_child = None 
+		self.right_child = None
+
+	def get_left_child(self): 
+		return self.left_child
+
+	def get_right_child(self): 
+		return self.right_child 
+
+	def get_item(self): 
+		return self.item
+
+	def set_item_equal(self, data): 
+		self.item = data 
+
+	def count(self): 
+		count = 0
+		if self.left_child:
+			count = count +1 
+		if self.right_child:
+			count = count + 1
+		return count 
+
+	def insert_right(self, new_node): 
+		if self.right_child is None: 
+			self.right_child = BinaryTree(new_node)
+		else: 
+			tree = BinaryTree(new_node)
+			tree.right_child = self.right_child
+			self.right_child = tree
+
+	def insert_left(self, new_node): 
+		if self.left_child is None: 
+			self.left_child = BinaryTree(new_node)
+		else: 
+			tree = BinaryTree(new_node)
+			tree.left_child = self.left_child
+			self.left_child = tree
+
+	
+def printTree(tree): 
+	if tree != None:  
+		printTree(tree.get_left_child())
+		print(tree.get_item())
+		printTree(tree.get_right_child())
+
+
