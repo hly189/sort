@@ -88,28 +88,10 @@ class SList(object):
 			current = next
 		self.head = previous 
 
-	def merge_list(self, other):
-		if self.head is None: 
-			self.head = other.head
-		else: 
-			current = self.head
-			while current.next is not None: 
-				current = current.next
-			current.next = other.head
-
-		
-
 
 s = SList()
-s.insertFont(1)
-s.insertEnd(2)
+s.insertFont(4)
 s.insertEnd(3)
-s.insertEnd(4)
-
-a = SList()
-a.insertFont(5)
-a.insertEnd(6)
-a.insertEnd(7)
-a.insertEnd(8)
-
+s.insertEnd(2)
+s.insertEnd(1)
 		
