@@ -5,10 +5,10 @@ class BinaryTree(object):
 		self.item = item 
 		self.left_child = None 
 		self.right_child = None
-		self.size = 0
+        self.size = 0
 
-	def get_size(self):
-		return self.size  
+def get_size(self):
+        return 
 
 	def get_left_child(self):
 		return self.left_child
@@ -37,7 +37,6 @@ class BinaryTree(object):
 			tree = BinaryTree(new_node)
 			tree.right_child = self.right_child
 			self.right_child = tree
-		self.size = self.size +1
 
 	def insert_left(self, new_node): 
 		if self.left_child is None: 
@@ -46,7 +45,7 @@ class BinaryTree(object):
 			tree = BinaryTree(new_node)
 			tree.left_child = self.left_child
 			self.left_child = tree
-		self.size = self.size + 1
+
 	
 def printTree(tree): 
 	if tree != None:  
