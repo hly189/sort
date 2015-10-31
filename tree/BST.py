@@ -20,26 +20,40 @@ class BSTreeNode:
 			else: 
 				self.right = BSTreeNode(key)
 				return False
-	
-	def delete(self, node, k):
-		if node == None: 
-			return None
-		elif node.value == k: 
-			if node.left is None and node.right is None: 
-				return None
-			elif node.left is None: 
-				return node.right
-			elif node.right is None: 
-				return node.left 
-			else: 
-				node.value = get_min(node.right)
-				node.right.delete(node.right,node.value)
-		elif k < node.value: 
-			node.left.delete(node.left,k)
-		else: 
-			node.right.delete(node.right,k)
-		return node
 
+	def find_min(self,parent): 
+		if self.left: 
+			return self.left.find_min(self)
+		else:
+			return [parent,self]
+
+	def delete(self,key): 
+		if self.value == key: 
+			if self.right and self.left: 
+				[psucc, succ] = self.right.find_min(self)	
+
+				if psucc.left == succ: 
+					psucc.left = succ.right
+				else:
+					psucc.right = succ.right
+
+				succ.left = self.left
+				succ.right = succ.right
+
+				return succ
+			else:
+				if self.left: 
+					return self.left
+				else: 
+					return self.right
+		else:
+			if self.value > key: 
+				if self.left: 
+					self.left = self.left.delete(key)
+			else: 
+				if self.right: 
+					self.right = self.right.delete(key)
+		return self 
 
 	def pre_order(self): 
 		if self: 
@@ -71,15 +85,16 @@ class BSTree:
 	def __init__(self): 
 		self.root = None 
 
-	def delete(self,key): 
-		self.root.delete(self.root,key)
-
 	def insert(self,data): 
 		if self.root: 
 			self.root.insert(data)
 		else: 
 			self.root = BSTreeNode(data)
 			return True 
+	def delete(self,key): 
+		if self.root: 
+			self.root.delete(key)
+	
 
 	def search_iter(self,key): 
 		current = self.root
@@ -93,11 +108,11 @@ class BSTree:
 				current = current.right
 		return None
 
-	def find_min(self,node):
-		current_node = node
-		while current_node.left: 
-			current_node = current_node.left
-		return current_node
+	def findMin(self): 
+		current = self.root
+		while current.left: 
+			current = current.left
+		return current
 
 	def pre_order(self): 
 		self.root.pre_order() 

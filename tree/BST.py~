@@ -20,14 +20,12 @@ class BSTreeNode:
 			else: 
 				self.right = BSTreeNode(key)
 				return False
-	
-	def delete(self, node, k):
-		if node == None: 
-			return None
-		elif node.value == k: 
-			if node.left is None and node.right is None: 
-				 
 
+	def find_min(self,parent): 
+		if self.left: 
+			return self.left.find_min(self)
+		else:
+			return [parent,self]
 
 	def pre_order(self): 
 		if self: 
@@ -59,9 +57,6 @@ class BSTree:
 	def __init__(self): 
 		self.root = None 
 
-	def delete(self,key): 
-		self.root = delete(self.root,key)
-
 	def insert(self,data): 
 		if self.root: 
 			self.root.insert(data)
@@ -80,23 +75,32 @@ class BSTree:
 			else: 
 				current = current.right
 		return None
-
-	def find_min(self,node):
-		current_node = node
-		while current_node.left: 
-			current_node = current_node.left
-		return current_node
-
-	def replace(self, new_value = None): 
-		current = self.root
-		if current: 
-			if self == current.left: 
-				current.left = new_value
+	def delete(self, key): 
+		if self.value == key: 
+			if self.right and self.left: 
+				[psucc,succ] = self.right.find_min(self)
+				if psucc.left = succ: 
+					psucc.left = succ.right
+				else: 
+					psucc.right = succ.right
+			
+				succ.left = self.left 
+				succ.right = succ.right 
+			
+				return succ 
 			else: 
-				current.right = new_value
-		if new_value: 
-			new_va.root = self.root
-
+				if self.left: 
+					return self.left 
+				else: 
+					return self.right 
+		else: 
+			if self.value > key: 
+				if self.left: 
+					self.left = self.left.delelte(key)
+			else: 
+				if self.right: 
+					self.right = self.right.delete(key)
+		return self
 
 	def pre_order(self): 
 		self.root.pre_order() 
@@ -124,7 +128,7 @@ def get_min(node):
 	current_node = node
 	while current_node.left: 
 		current_node = current_node.left
-	return str(current_node.value)
+	return current_node
 
 def print_helper(root, indent):
     if root is not None:
