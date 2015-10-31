@@ -33,11 +33,11 @@ class BSTreeNode:
 				return node.left 
 			else: 
 				node.value = get_min(node.right)
-				node.right = delete(node.right,node.value)
+				node.right.delete(node.right,node.value)
 		elif k < node.value: 
 			node.left.delete(node.left,k)
 		else: 
-			node.right = delete(node.right,k)
+			node.right.delete(node.right,k)
 		return node
 
 
@@ -72,7 +72,7 @@ class BSTree:
 		self.root = None 
 
 	def delete(self,key): 
-		self.root =delete(self.root,key)
+		self.root.delete(self.root,key)
 
 	def insert(self,data): 
 		if self.root: 
