@@ -31,7 +31,7 @@ class Node:
 			if self.left is not None: 
 				return self.left.find(key)
 			else: 
-				return self.right.find(left)
+				return self.right.find(key)
 
 
 class BinaryTree(object):	
