@@ -11,27 +11,28 @@ def counting_element(s):
 	#if array is empty, force quit 
 	if len(s) == 0: return 
 
-	#sorted an array 
+	#sort an array 
 	s = quick_sort(s)
 
-	previous = s[0]
-	count = 0
-	new_array = []
-	new_array.append(count)
-	j = 0
+	previous = s[0] # set previous to the first element in that array 
+	count = 0 # count is used to keep track of the element 
+	new_array = [] #this array is used to store the count elemnt 
+	new_array.append(count) #create first element of empty array 
+	j = 0 
 
+	#go through the array and find the repeated elemnt of that aray
 	for i in range(0,len(s)): 
 		if s[i] == previous: 
 			count = count + 1
 			new_array[j] = count 
 		else: 
 			print("element:{0},appear:{1}".format(previous,count))
-			previous = s[i]
-			count = 1
-			j = j + 1
-			new_array.append(count)
+			previous = s[i] # set previous to the next element 
+			count = 1 #reset this couting to 1
+			j = j + 1 # move to the next element of new_array
+			new_array.append(count) # append to the next count of new element 
 	print("element:{0},appear:{1}".format(previous,count))
-	return new_array
+	return new_array 
 
 """
 This function will sort an array and deleted the duplicated of an element that array 
