@@ -57,7 +57,25 @@ def max_kth_element(s):
 	max_key = max(inverse)[1]
 	return max_key
 
+def return_k_element(s,k): 
+	count_element = counting_element(s)
+	s = remove_sort(s)
+	dictionary = put_to_dict(s,count_element)
+	dictionary2 = quick_sort([(value,key) for  (key,value) in dictionary.items()])
+
+	array_k = []
+	i = 0
+
+	while i <k: 
+		array_k.append(dictionary2[i][1])
+		i = i+1
+
+	return array_k
+
 
 
 s = [1,3,4,4,3,2,2,2,5,6,7,7]
-max = max_kth_element(s)
+a = return_k_element(s,3)
+#a = counting_element(s)
+#s = remove_sort(s)
+#dictionary = put_to_dict(s,a)
