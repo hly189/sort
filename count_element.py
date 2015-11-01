@@ -41,15 +41,22 @@ def remove_sort(s):
 	return s 
 
 """
-This functino is used to map 2 arrays into a dictionary
+This function is used to map 2 arrays into a dictionary
 """
 def put_to_dict(s1,s2): 
 	dictionary = dict(zip(s1,s2))
 	return dictionary
 
-def 
+"""Return the kth element which have the most repeated times in an array"""
+def max_kth_element(s):
+	count_element = counting_element(s)
+	s = remove_sort(s)
+	dictionary = put_to_dict(s,count_element)
+	inverse = [(value, key) for key, value in dictionary.items()]
+	max_key = max(inverse)[1]
+	return max_key
 
 
-s = [1,3,2,4,2]
-#s = quick_sort(s)
-#a = counting_element(s)
+
+s = [1,3,4,4,3,2,2,2,5,6,7,7]
+max = max_kth_element(s)
