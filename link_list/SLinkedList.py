@@ -76,6 +76,23 @@ class SList(object):
 			previous = current
 			current = current.get_next()
 
+	def remove_duplicate(self): 
+		current = self.head
+
+		while current is not None: 
+			before_check = current
+			check = current.next 
+
+			while check is not None: 
+				if check.item == current.item: 
+					before_check.next = check.next
+					check = check.next 
+				else: 
+					before_check = check 
+					check = check.next
+
+			current = current.next 
+
 	def reverse_iter(self): 
 		current = self.head
 		previous = None
@@ -97,11 +114,18 @@ class SList(object):
 				current = current.next
 			current.next = other.head
 
-		
+	def to_string(self): 
+		values = []
+		current = self.head
+		while current is not None: 
+			values.append(str(current.item))	
+			current = current.next
+		return ','.join(values)
 
 
 s = SList()
 s.insertFont(1)
+s.insertEnd(2)
 s.insertEnd(2)
 s.insertEnd(3)
 s.insertEnd(4)

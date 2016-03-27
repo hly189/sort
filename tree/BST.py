@@ -19,7 +19,7 @@ class BSTreeNode:
 				return self.right.insert(key)
 			else: 
 				self.right = BSTreeNode(key)
-				return False
+				return True 
 
 	def find_min(self,parent): 
 		if self.left: 
@@ -90,11 +90,7 @@ class BSTree:
 			self.root.insert(data)
 		else: 
 			self.root = BSTreeNode(data)
-			return True 
-	def delete(self,key): 
-		if self.root: 
-			self.root.delete(key)
-	
+			return True 	
 
 	def search_iter(self,key): 
 		current = self.root
@@ -148,6 +144,17 @@ def print_helper(root, indent):
         print (indent + str(root.value))
         print_helper(root.left, indent + "   ")
 
+def lca(root,p,q): 
+	if root is None or root.value == p or root.value == q: 
+		return root 
+ 	if (p.value <= root.value and root.value <= q.value) or (q.value <= root.value and root.value <= p.value):
+ 		return root
+ 	if root.value > p.value and root.value >q.value: 
+ 		return lca(root.left,p,q)
+ 	if root.value < p.value and root.value < q.value: 
+ 		return lca(root.right,p,q)
+
+
 bst = BSTree()
 bst.insert(5)
 bst.insert(11)
@@ -157,4 +164,5 @@ bst.insert(4)
 bst.insert(6)
 bst.insert(12)
 
+print_tree(bst.root)
 

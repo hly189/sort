@@ -26,12 +26,12 @@ def counting_element(s):
 			count = count + 1
 			new_array[j] = count 
 		else: 
-			print("element:{0},appear:{1}".format(previous,count))
+			#print("element:{0},appear:{1}".format(previous,count))
 			previous = s[i] # set previous to the next element 
 			count = 1 #reset this couting to 1
 			j = j + 1 # move to the next element of new_array
 			new_array.append(count) # append to the next count of new element 
-	print("element:{0},appear:{1}".format(previous,count))
+	#print("element:{0},appear:{1}".format(previous,count))
 	return new_array 
 
 """
@@ -57,6 +57,7 @@ def max_kth_element(s):
 	max_key = max(inverse)[1]
 	return max_key
 
+"""return the k elements of the array """
 def return_k_element(s,k): 
 	count_element = counting_element(s)
 	s = remove_sort(s)
@@ -73,9 +74,8 @@ def return_k_element(s,k):
 	return array_k
 
 
-
 s = [1,3,4,4,3,2,2,2,5,6,7,7]
 a = return_k_element(s,3)
+print(a)
 #a = counting_element(s)
-#s = remove_sort(s)
 #dictionary = put_to_dict(s,a)

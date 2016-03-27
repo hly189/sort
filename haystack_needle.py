@@ -18,5 +18,7 @@ def strStr(haystack, neddle):
 	if i == len(haystack) - len(neddle) + 1: 
 		print("no substring")
 	else: 
-		return haystack[i:]
+		return haystack[i:
+
+		]
 

@@ -19,4 +19,4 @@ def quick_sort(s):
             i = i+1
         less = quick_sort(less)
         more = quick_sort(more)
-        return more + equal + less 
+        return less + equal + more 
