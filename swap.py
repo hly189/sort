@@ -1,4 +1,2 @@
-def swap (s,x,y): 
-    temp = s[x]
-    s[x] = s[y]
-    s[y] = temp 
+def swap (s,x,y):
+    s[x], s[y] = s[y], s[x]
